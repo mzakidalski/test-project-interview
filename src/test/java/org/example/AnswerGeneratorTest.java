@@ -25,6 +25,7 @@ class AnswerGeneratorTest {
         var answer = answerGenerator.generateListAnswer();
         assertThat(answer, hasSize(4));
         assertThat(answer, contains("42", "is", "the", "answer"));
+        assertThat(answer, containsInAnyOrder("answer", "the", "is", "42"));
     }
 
 
