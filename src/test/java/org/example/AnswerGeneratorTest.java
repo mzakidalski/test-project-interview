@@ -6,6 +6,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 class AnswerGeneratorTest {
@@ -33,6 +34,12 @@ class AnswerGeneratorTest {
         var answer = answerGenerator.generateArrayAnswer();
         assertThat(answer, arrayWithSize(4));
         assertThat(answer, arrayContaining("42", "is", "the", "answer"));
+    }
+
+    @Test
+    void generateAnswerThrowingException() {
+        var answerGenerator = new AnswerGenerator();
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> answerGenerator.generateAnswerThrowingAssertions(42));
     }
 
 

@@ -14,4 +14,11 @@ public class AnswerGenerator {
     public String[] generateArrayAnswer() {
         return new String[]{ "42", "is", "the", "answer" };
     }
+
+    public String generateAnswerThrowingAssertions(int input) {
+        if (input == 42) {
+            throw new IllegalArgumentException("This argument is incorrect");
+        }
+        return "42";
+    }
 }
