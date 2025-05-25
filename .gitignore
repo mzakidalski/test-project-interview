@@ -40,3 +40,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+/.idea/gradle.xml
+/gradle/wrapper/gradle-wrapper.jar
+/.idea/misc.xml
