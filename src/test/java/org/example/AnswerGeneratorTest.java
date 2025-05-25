@@ -1,5 +1,6 @@
 package org.example;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class AnswerGeneratorTest {
 
     @Test
+    @DisplayName("generate answer")
     void generateAnswer() {
         var answerGenerator = new AnswerGenerator();
         assertThat(answerGenerator.generateAnswer(), equalTo("42"));
@@ -20,6 +22,7 @@ class AnswerGeneratorTest {
     }
 
     @Test
+    @DisplayName("generate answers as list")
     void generateAnswerAsList() {
         var answerGenerator = new AnswerGenerator();
         var answer = answerGenerator.generateListAnswer();
@@ -29,6 +32,7 @@ class AnswerGeneratorTest {
     }
 
     @Test
+    @DisplayName("generate answer as array")
     void generateAnswerAsArray() {
         var answerGenerator = new AnswerGenerator();
         var answer = answerGenerator.generateArrayAnswer();
@@ -37,6 +41,7 @@ class AnswerGeneratorTest {
     }
 
     @Test
+    @DisplayName("generate answer throwing exception")
     void generateAnswerThrowingException() {
         var answerGenerator = new AnswerGenerator();
         Exception ex = assertThrows(IllegalArgumentException.class, () -> answerGenerator.generateAnswerThrowingAssertions(42));
