@@ -1,5 +1,6 @@
 package org.example;
 
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,8 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class AnswerGeneratorTest {
@@ -29,8 +29,8 @@ class AnswerGeneratorTest {
     @DisplayName("generate answer")
     void generateAnswer() {
         assertThat(answerGenerator.generateAnswer(), equalTo("42"));
-        assertThat(answerGenerator.generateAnswer(), startsWith("4"));
-        assertThat(answerGenerator.generateAnswer(), endsWith("2"));
+        assertThat(answerGenerator.generateAnswer(), Matchers.startsWith("4"));
+        assertThat(answerGenerator.generateAnswer(), Matchers.endsWith("2"));
         verify(answerGenerator, times(3)).generateAnswer();
     }
 
@@ -68,7 +68,13 @@ class AnswerGeneratorTest {
     void testMultipleParameters(MyEnum myEnum, float value, String result) {
         assertThat(myEnum, is(not(MyEnum.GAMMA)));
         assertThat(value, is(greaterThan(1.0f)));
-        assertThat(result, startsWith("a"));
+        assertThat(result, Matchers.startsWith("a"));
+    }
+
+    @Test
+    void generateAnswerWithTime() {
+        when(timeProvider.getTime()).thenReturn("17:00");
+        assertThat(answerGenerator.generateAnswerWithTime(), equalTo("42 17:00"));
     }
 
 

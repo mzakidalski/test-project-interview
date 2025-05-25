@@ -27,4 +27,8 @@ public class AnswerGenerator {
         }
         return "42";
     }
+
+    public String generateAnswerWithTime() {
+        return "42 " + timeProvider.getTime();
+    }
 }
