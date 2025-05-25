@@ -3,6 +3,12 @@ package org.example;
 import java.util.List;
 
 public class AnswerGenerator {
+    private TimeProvider timeProvider;
+
+    public AnswerGenerator(TimeProvider timeProvider) {
+        this.timeProvider = timeProvider;
+    }
+
     public String generateAnswer() {
         return "42";
     }
