@@ -1,0 +1,15 @@
+
+/*
+The Unix `find` command allows you to search for files under a given directory.
+You can specify criteria for files you are interested in.
+
+Imagine that you need to implement this functionality in a library/application.
+For example, users of the library might want do do the following:
+
+- Find all files with "test" in their name
+- Find all files over 5 MB
+- Find all XML files
+AND
+
+find *.txt /
+*/
